@@ -1,0 +1,57 @@
+/*import express from "express";
+import productCtrl from "../controllers/product.controller.js";
+import authCtrl from "../controllers/auth.controller.js";
+import shopCtrl from "../controllers/shop.controller.js";
+const router = express.Router();
+router
+  .route("/api/products/by/:productId")
+  .post(authCtrl.requireSignin, productCtrl.isOwner, productCtrl.create)
+  .get(productCtrl.listByProduct);
+router.route("/api/products/:productId").get(productCtrl.read);
+router
+  .route("/api/product/image/:productId")
+  .get(productCtrl.photo, productCtrl.defaultPhoto);
+router.route("/api/product/defaultphoto").get(productCtrl.defaultPhoto);
+router
+  .route("/api/product/:productId/:productId")
+  .put(authCtrl.requireSignin, shopCtrl.isOwner, productCtrl.update)
+  .delete(authCtrl.requireSignin, shopCtrl.isOwner, productCtrl.remove);
+router.param("shopId", shopCtrl.shopByID);
+router.param("productId", productCtrl.productByID);
+export default router;
+*/
+
+import express from "express";
+import productCtrl from "../controllers/product.controller.js";
+import authCtrl from "../controllers/auth.controller.js";
+import shopCtrl from "../controllers/shop.controller.js";
+
+const router = express.Router();
+
+// Use listByOwner or rename in your controller accordingly
+router
+  .route("/api/products/by/:productId")
+  .post(authCtrl.requireSignin, productCtrl.isOwner, productCtrl.create)
+  .get(productCtrl.listByOwner);
+
+// Single product read
+router.route("/api/products/:productId").get(productCtrl.read);
+
+// Product image routes
+router
+  .route("/api/product/image/:productId")
+  .get(productCtrl.photo, productCtrl.defaultPhoto);
+
+router.route("/api/product/defaultphoto").get(productCtrl.defaultPhoto);
+
+// Update and delete product — changed to use shopId and productId properly
+router
+  .route("/api/product/:shopId/:productId")
+  .put(authCtrl.requireSignin, shopCtrl.isOwner, productCtrl.update)
+  .delete(authCtrl.requireSignin, shopCtrl.isOwner, productCtrl.remove);
+
+// Param middleware
+router.param("shopId", shopCtrl.shopByID);
+router.param("productId", productCtrl.productByID);
+
+export default router;
