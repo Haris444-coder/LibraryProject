@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
-import unicornbikeImg from "./../assets/images/unicornbikeImg.jpg";
+import library from "./../assets/images/library.jpg";
 
 const Home = () => {
   const theme = useTheme();
@@ -31,12 +31,12 @@ const Home = () => {
       </Typography>
       <CardMedia
         sx={{ minHeight: 400 }}
-        image={unicornbikeImg}
-        title="Unicorn Bike"
+        image={library}
+        title="Library"
       />
       <CardContent>
         <Typography variant="body2" component="p">
-          Welcome to the MERN Skeleton home page.
+          Welcome to the online library! This is where users can add books and check out books
         </Typography>
       </CardContent>
     </Card>
