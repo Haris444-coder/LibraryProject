@@ -86,7 +86,7 @@ export default function Books() {
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h6">{b.title}</Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {b.author}
+                    Author: {b.author}
                   </Typography>
                   {b.genre && (
                     <Typography variant="body2" color="text.secondary">
